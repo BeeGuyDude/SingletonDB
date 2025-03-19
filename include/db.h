@@ -37,7 +37,7 @@ class Database {
     void* operator new(size_t size);
  
      //overload the delete operator that deallocates memory and prints "overloaded delete " (cout is okay in this). std::cout << "overloaded delete ";
-    void operator delete();
+    void operator delete(void* ptr);
  
     //set_username and get_username for username
 	void set_username(std::string username);
