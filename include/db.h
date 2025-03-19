@@ -2,15 +2,17 @@
 #include <string>
 
 class Database {
-     //member variable "db" is of string type
+  private: 
+   	//member variable "db" is of string type
 	std::string db;
 	std::string username;
 	std::string password;
 
 	bool connected = false;
      
-	static Database* instance = nullptr;
-	
+	static Database* instance;
+
+  public:	
    	//Public constructor and destructor
 	Database(std::string db, std::string username, std::string password);	
    	~Database();	
