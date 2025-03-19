@@ -18,7 +18,7 @@ class Database {
    	~Database();	
 
 	//General instance handling
-	Database getInstance();	
+	Database* getInstance(std::string db, std::string username, std::string password);	
     
 	//"getInstance" that creates and returns the instance of the database (Database*). 
 	//If called first time it sets the username and password. 
