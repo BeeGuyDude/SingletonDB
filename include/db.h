@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include <exception>
+#include <iostream>
 
 class Database {
   private: 
