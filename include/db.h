@@ -30,14 +30,14 @@ class Database {
  
 	void connect();
 	void disconnect();
-	bool connected();
+	bool isConnected();
  
      //overload the new operator that allocates memory using malloc of given size and returns pointer of type void and prints " overloaded new " (cout is okay in this case). std::cout << "overloaded new ";
      //If the memory allocation fails it should throw std::bad_alloc()
     void* operator new(size_t size);
  
      //overload the delete operator that deallocates memory and prints "overloaded delete " (cout is okay in this). std::cout << "overloaded delete ";
-    void* operator delete();
+    void operator delete();
  
     //set_username and get_username for username
 	void set_username(std::string username);

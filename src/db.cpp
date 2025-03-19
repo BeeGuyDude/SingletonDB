@@ -31,7 +31,7 @@ void Database::disconnect() {
 }
 
 //Return the status of whether the database is currently connected
-bool Database::connected() {
+bool Database::isConnected() {
 	return connected;
 }
 
@@ -56,7 +56,7 @@ void* Database::operator new(size_t size) {
 	return p_db;	
 }
 
-void* DataBase::operator delete(void* ptr) {
+void DataBase::operator delete(void* ptr) {
 	std::free(ptr);
 	std::cout << "overloaded delete ";
 }
