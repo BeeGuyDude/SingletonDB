@@ -1,5 +1,23 @@
 #include "db.h" 
 
+void* Database::operator new(size_t size) {
+	void* p_db = std::malloc(size);
+	std::cout << " overloaded new ";
+	
+	//Confirm that the pointer was set properly
+	if (!p_db) {
+		throw std::bad_alloc();
+	}
+	//Return once allocated
+	return p_db;	
+}
+
+void Database::operator delete(void* ptr) {
+	std::free(ptr);
+	std::cout << "overloaded delete ";
+}
+
+
 //Default constructor
 Database::Database(std::string db, std::string username, std::string password) {
 	this->db = db;
@@ -82,23 +100,6 @@ void Database::resetInstance() {
 		delete instance;
 		instance = nullptr;
 	}
-}
-
-void* Database::operator new(size_t size) {
-	void* p_db = std::malloc(size);
-	std::cout << " overloaded new ";
-	
-	//Confirm that the pointer was set properly
-	if (!p_db) {
-		throw std::bad_alloc();
-	}
-	//Return once allocated
-	return p_db;	
-}
-
-void Database::operator delete(void* ptr) {
-	std::free(ptr);
-	std::cout << "overloaded delete ";
 }
 
 void Database::set_username(std::string username) {
