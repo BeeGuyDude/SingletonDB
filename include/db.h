@@ -17,14 +17,15 @@ class Database {
 
 	time_t last_activity;
 	static const int TIMEOUT{5};
-
-  public:	
-   	//Public constructor and destructor
+	
+	//Public constructor and destructor
 	Database(std::string db, std::string username, std::string password);	
    	~Database();	
 
+  public:	
+   	
 	//General instance handling
-	static Database& getInstance(std::string db, std::string username, std::string password);	
+	Database* getInstance(std::string db, std::string username, std::string password);	
     
 	//Standard methods for dealing with connection status
 	void connect();

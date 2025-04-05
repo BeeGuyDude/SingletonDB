@@ -8,17 +8,18 @@ Database::Database(std::string db, std::string username, std::string password) {
 }
 
 //Singleton instance handling
-Database& Database::getInstance(std::string db, std::string username, std::string password) {
+Database* Database::instance = nullptr;
+Database* Database::getInstance(std::string db, std::string username, std::string password) {
 	if (instance == nullptr) {
 		instance = new Database(db, username, password);
-		return *instance;
+		return instance;
 	} else {
-		if (db != Database::instance->db || 
-			username != Database::instance->username || 
-			Database::instance->password != password) {
+		if (db != instance->db || 
+			username != instance->username || 
+			password != instance->password) {
 			throw std::runtime_error("invalid database name, username, or password");
 		} else {
-			return *instance;
+			return instance;
 		}	
 	}
 }
