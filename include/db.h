@@ -18,12 +18,19 @@ class Database {
 	time_t last_activity;
 	static const int TIMEOUT{5};
 	
-	//Public constructor and destructor
-	Database(std::string db, std::string username, std::string password);	
-   	~Database();	
-
+	
   public:	
    	
+	//Public constructor and destructor
+	Database(std::string db, std::string username, std::string password);	
+   	~Database();
+
+	//Copy constructor, Copy assignment, Move constructor, Move assignment
+	Database(const Database& copy_db);
+	Database& operator=(const Database& copy_db);	
+	Database(Database&& move_db);
+	Database& operator=(Database&& move_db);
+	
 	//General instance handling
 	static Database* getInstance(std::string db, std::string username, std::string password);	
     

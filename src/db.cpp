@@ -29,6 +29,26 @@ Database::~Database() {
 	resetInstance();
 }
 
+//Copy constructor, overridden to not allow access
+Database::Database(const Database& copy_db) {
+	throw std::runtime_error("Copy construction not allowed by singleton pattern!");
+}
+
+//Copy assignment operator, overridden to not allow access
+Database& Database::operator=(const Database& copy_db) {
+	throw std::runtime_error("Copy assignment not allowed by singleton pattern!");
+}
+
+//Move constructor, overridden to not allow access
+Database::Database(Database&& move_db) {
+	throw std::runtime_error("Move construction not allowed by singleton pattern!");
+}
+
+//Move assignment operator, overridden to not allow access
+Database& Database::operator=(Database&& move_db) {
+	throw std::runtime_error("Move assignment not allowed by singleton pattern!");
+}
+
 //Connect the database
 void Database::connect() {
 	connected = true;
