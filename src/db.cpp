@@ -69,7 +69,7 @@ std::string Database::get_username() {
 	return username;
 }
 
-void Databade::set_password(std::string password) {
+void Database::set_password(std::string password) {
 	this->password = password;
 }
 
