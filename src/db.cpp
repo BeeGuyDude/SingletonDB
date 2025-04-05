@@ -2,7 +2,7 @@
 
 void* Database::operator new(size_t size) {
 	void* p_db = std::malloc(size);
-	std::cout << " overloaded new ";
+	std::cout << "overloaded new ";
 	
 	//Confirm that the pointer was set properly
 	if (!p_db) {
@@ -84,13 +84,12 @@ bool Database::isConnected() {
 
 //Return the status of whether the connection is beyond the timeout threshold
 bool Database::isTimeout() {
-	//TODO
-	return false;
+	return (std::time(0) > last_activity + TIMEOUT);
 }
 
 //Refresh the timeout timer to avoid watchdog timeout
 void Database::refreshConnection() {
-	//TODO
+	last_activity = std::time(0);
 }
 
 //Delete the instance pointer so next getInstance() call will create a new one
