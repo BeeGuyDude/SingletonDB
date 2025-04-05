@@ -8,16 +8,24 @@ Database::Database(std::string db, std::string username, std::string password) {
 }
 
 //Singleton instance handling
-Database* Database::getInstance(std::string db, std::string username, std::string password) {
+Database& Database::getInstance(std::string db, std::string username, std::string password) {
 	if (instance == nullptr) {
-		return new Database(db, username, password);
+		instance = new Database(db, username, password);
+		return *instance;
 	} else {
-		if (db != this->db || username != this->username || this->password != password) {
+		if (db != Database::instance->db || 
+			username != Database::instance->username || 
+			Database::instance->password != password) {
 			throw std::runtime_error("invalid database name, username, or password");
 		} else {
-			return instance;
+			return *instance;
 		}	
 	}
+}
+
+//Custom destructor to ensure memory is deallocated
+Database::~Database() {
+	resetInstance();
 }
 
 //Connect the database
@@ -33,6 +41,17 @@ void Database::disconnect() {
 //Return the status of whether the database is currently connected
 bool Database::isConnected() {
 	return connected;
+}
+
+//Return the status of whether the connection is beyond the timeout threshold
+bool Database::isTimeout() {
+	//TODO
+	return false;
+}
+
+//Refresh the timeout timer to avoid watchdog timeout
+void Database::refreshConnection() {
+	//TODO
 }
 
 //Delete the instance pointer so next getInstance() call will create a new one
