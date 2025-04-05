@@ -13,8 +13,8 @@ void* Database::operator new(size_t size) {
 }
 
 void Database::operator delete(void* ptr) {
-	std::free(ptr);
 	std::cout << "overloaded delete ";
+	std::free(ptr);
 }
 
 
@@ -44,7 +44,7 @@ Database* Database::getInstance(std::string db, std::string username, std::strin
 
 //Custom destructor to ensure memory is deallocated
 Database::~Database() {
-	resetInstance();
+	//resetInstance();
 }
 
 //Copy constructor, overridden to not allow access
