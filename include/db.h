@@ -25,7 +25,7 @@ class Database {
   public:	
    	
 	//General instance handling
-	Database* getInstance(std::string db, std::string username, std::string password);	
+	static Database* getInstance(std::string db, std::string username, std::string password);	
     
 	//Standard methods for dealing with connection status
 	void connect();
