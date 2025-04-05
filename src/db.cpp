@@ -10,7 +10,7 @@ Database::Database(std::string db, std::string username, std::string password) {
 //Singleton instance handling
 Database* Database::getInstance(std::string db, std::string username, std::string password) {
 	if (instance == nullptr) {
-		return new DataBase(db, username, password);
+		return new Database(db, username, password);
 	} else {
 		if (db != this->db || username != this->username || this->password != password) {
 			throw std::runtime_error("invalid database name, username, or password");
@@ -56,7 +56,7 @@ void* Database::operator new(size_t size) {
 	return p_db;	
 }
 
-void DataBase::operator delete(void* ptr) {
+void Database::operator delete(void* ptr) {
 	std::free(ptr);
 	std::cout << "overloaded delete ";
 }
@@ -69,7 +69,7 @@ std::string Database::get_username() {
 	return username;
 }
 
-void set_password(std::string password) {
+void Databade::set_password(std::string password) {
 	this->password = password;
 }
 
